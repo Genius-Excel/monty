@@ -69,9 +69,6 @@ void pall(stack_t **stack, unsigned int line_number)
 		head = (*head).next;
 	}
 }
-/* op_funcs.c */
-
-#include "monty.h"
 
 /**
  * pint - prints the value at the top of the stack
@@ -88,11 +85,6 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	printf("%d\n", (*stack)->n);
 }
-
-/* op_funcs.c */
-
-#include "monty.h"
-
 /**
  * pop - removes the top element of the stack
  * @stack: pointer to the stack
@@ -114,8 +106,6 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	free(temp);
 }
-#include "monty.h"
-
 /**
  * swap - swaps the top two elements of the stack
  * @stack: pointer to the stack
@@ -123,8 +113,8 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first_element = *stack;
-	stack_t *second_element = (*stack)->next;
+	stack_t *first = *stack;
+	stack_t *second = first->next;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -132,13 +122,13 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	first_element->next = second_element->next;
-	first_element->prev = second_element;
-	second_element->next = first_element;
-	second_element->prev = NULL;
+	if (second->next != NULL)
+		second->next->prev = first;
+	first->next = second->next;
 
-	if (first_element->next != NULL)
-		first_element->next->prev = first_element;
+	second->prev = NULL;
+	second->next = first;
+	first->prev = second;
 
-	*stack = second_element;
+	*stack = second;
 }

@@ -1,5 +1,5 @@
+#define _POSIX_C_SOURCE 200809L
 #include "monty.h"
-
 /**
 * main - this is the main function entry point.
 * @argc: command line argument count.
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 

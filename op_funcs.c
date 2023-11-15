@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
-* push - this function push an element to a stack.
-* @stack: pointer to the stack element is to be pushed.
-* @line_number: line number at which the functon is to be executed.
-* Return: void.
-*/
+ * push - this function push an element to a stack.
+ * @stack: pointer to the stack element is to be pushed.
+ * @line_number: line number at which the functon is to be executed.
+ * Return: void.
+ */
 
 void push(stack_t **stack, unsigned int line_number)
 {
@@ -50,11 +50,11 @@ void push(stack_t **stack, unsigned int line_number)
 
 
 /**
-* pall - this function prints all the elements in a stack to stdout.
-* @stack: stack of linked list.
-* @line_number: number on the file which the element is to be printed from.
-* Return: void.
-*/
+ * pall - this function prints all the elements in a stack to stdout.
+ * @stack: stack of linked list.
+ * @line_number: number on the file which the element is to be printed from.
+ * Return: void.
+ */
 
 void pall(stack_t **stack, unsigned int line_number)
 {
@@ -68,4 +68,23 @@ void pall(stack_t **stack, unsigned int line_number)
 
 		head = (*head).next;
 	}
+}
+/* op_funcs.c */
+
+#include "monty.h"
+
+/**
+ * pint - prints the value at the top of the stack
+ * @stack: pointer to the stack
+ * @line_number: line number in the file
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*stack)->n);
 }

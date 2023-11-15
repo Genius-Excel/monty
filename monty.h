@@ -44,7 +44,7 @@ void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
 bool is_a_number(char *ch_arr);
 void pint(stack_t **stack, unsigned int line_number);
-
+void pop(stack_t **stack, unsigned int line_number);
 /*instruction_t instructions[] = {
 *
 *	{"push", push},

@@ -1,62 +1,46 @@
+#define _POSIX_C_SOURCE 200809L
 #include "monty.h"
-/*
-* main - an interpreter for Monty ByteCode files
-* @argc: argument count
-* @argv: argument variable
-* Return: always an integer
-*/
-stack_t *top = NULL;
-int main(int argc, const char *argv[]) 
+bus_t bus = {NULL, NULL, NULL, 0};
+/**
+ * main - monty code interpreter
+ * @argc: number of arguments
+ * @argv: monty file location
+ * Return: 0 on success
+ */
+int main(int argc, char *argv[])
 {
-    const char *filename;
+	char *content;
+	FILE *file;
+	size_t size = 0;
+	ssize_t read_line = 1;
+	stack_t *stack = NULL;
+	unsigned int counter = 0;
 
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-
-        exit(EXIT_FAILURE);
-
-    } 
-    else 
-    {
-        filename = argv[1];
-
-        if (access(filename, F_OK) != -1) 
+	if (argc != 2)
 	{
-            FILE *fp = fopen(filename, "r");
-
-            if (fp == NULL)
-	    {
-                fprintf(stderr, "Error: Can't open file %s\n", filename);
-
-                exit(EXIT_FAILURE);
-            }
-
-            // SCAN THROUGH FILE AND MAKE FUNCTION CALLS=====
-            char str[1024];
-
-            while (fgets(str, sizeof(str), fp) != NULL)
-	    {
-                // Check if the line is equal to "push"
-                if (strcmp(str, "push\n") == 0)
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	file = fopen(argv[1], "r");
+	bus.file = file;
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	while (read_line > 0)
+	{
+		content = NULL;
+		read_line = getline(&content, &size, file);
+		bus.content = content;
+		counter++;
+		if (read_line > 0)
 		{
-                    // Call push function...
-                    printf("Found 'push' in the file\n");
-                }
-                // Add more conditions for other cases if needed
-            }
-
-            fclose(fp);
-            printf("File is accessible\n");
-        } 
-	else
-	{
-            fprintf(stderr, "Error: Can't open file %s\n", filename);
-
-            exit(EXIT_FAILURE);
-        }
-    }
-
-    return 0;
+			execute(content, &stack, counter, file);
+		}
+		free(content);
+	}
+	free_stack(stack);
+	fclose(file);
+	return (0);
 }
-

@@ -1,29 +1,37 @@
 #include "monty.h"
-
 /**
- * push - pushes stack elements to the top of the stack
- * @n: data of the element to be pushed
+ * f_push - add node to the stack
+ * @head: stack head
+ * @counter: line_number
+ * Return: no return
  */
-void push(int n)
+void f_push(stack_t **head, unsigned int counter)
 {
-	stack_t *newnode = malloc(sizeof(stack_t));
+	int n, j = 0, flag = 0;
 
-	if (newnode == NULL)
+	if (bus.arg)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-
-		exit(EXIT_FAILURE);
-	}
-
-	newnode->n = n;
-	newnode->next = top;  // Link new node to the current top
-	newnode->prev = NULL;  // Since it's the new top, its previous is NULL
-
-	if (top != NULL)
-	{
-		top->prev = newnode;  // Update the previous of the old top
-	}
-
-	top = newnode;  // Update the top to the new node
+		if (bus.arg[0] == '-')
+			j++;
+		for (; bus.arg[j] != '\0'; j++)
+		{
+			if (bus.arg[j] > 57 || bus.arg[j] < 48)
+				flag = 1; }
+		if (flag == 1)
+		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+			fclose(bus.file);
+			free(bus.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE); }}
+	else
+	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE); }
+	n = atoi(bus.arg);
+	if (bus.lifi == 0)
+		addnode(head, n);
+	else
+		addqueue(head, n);
 }
-

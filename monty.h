@@ -45,11 +45,14 @@ void free_stack(stack_t **stack);
 bool is_a_number(char *ch_arr);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 /*instruction_t instructions[] = {
 *
 *	{"push", push},
 *	{"pall", pall},
 *	{"pint", pint},
+*	{"pop", pop},
+*	{"swap", swap},
 *	{NULL, NULL}
 };*/
 

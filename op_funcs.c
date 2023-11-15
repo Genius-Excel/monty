@@ -101,6 +101,7 @@ void pint(stack_t **stack, unsigned int line_number)
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
+
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
@@ -112,4 +113,32 @@ void pop(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 
 	free(temp);
+}
+#include "monty.h"
+
+/**
+ * swap - swaps the top two elements of the stack
+ * @stack: pointer to the stack
+ * @line_number: line number in the file
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *first_element = *stack;
+	stack_t *second_element = (*stack)->next;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	first_element->next = second_element->next;
+	first_element->prev = second_element;
+	second_element->next = first_element;
+	second_element->prev = NULL;
+
+	if (first_element->next != NULL)
+		first_element->next->prev = first_element;
+
+	*stack = second_element;
 }

@@ -50,16 +50,6 @@ void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void push_stack(stack_t **stack, int value);
 void print_stack(stack_t *stack);
-/*instruction_t instructions[] = {
-*
-*	{"push", push},
-*	{"pall", pall},
-*	{"pint", pint},
-*	{"pop", pop},
-*	{"swap", swap},
-*	{NULL, NULL}
-};*/
-
 /*Helper functions prototypes*/
 
 #endif

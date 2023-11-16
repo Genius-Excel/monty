@@ -65,6 +65,12 @@ int main(int argc, char *argv[])
 
 		line_number += 1; /*Proceeds to read the next line in file.*/
 
+		/*Checks for comment on a line*/
+		if (buffer_ptr[0] == '#' || buffer_ptr[0] == '\n')
+		{
+			continue;
+		}
+
 		opcode_token = strtok(buffer_ptr, " \n\t");
 
 		if (opcode_token != NULL) /*Checks if it's not end of line*/

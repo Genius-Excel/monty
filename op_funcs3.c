@@ -108,12 +108,12 @@ void pchar(stack_t **stack, unsigned int line_number)
 	if ((*(*stack)).n >= 0 && (*(*stack)).n <= 127)
 	{
 
-		do {
+	/*	do {*/
 
-			putchar((*(*stack)).n);
+		putchar((*(*stack)).n);
 
 		/*	*stack = (*(*stack)).next;*/
-		} while ((*(*stack)).n >= 0 && (*(*stack)).n <= 127);
+	/*	} while ((*(*stack)).n >= 0 && (*(*stack)).n <= 127);*/
 
 	}
 	else

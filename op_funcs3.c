@@ -111,5 +111,5 @@ void pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	putchar((*(*stack)).n);
+	printf("%c\n", (*(*stack)).n);
 }

@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"div", div_op},
+		{"div", div_func},
+		{"mul", mul_func},
 		{NULL, NULL}
 	};
 

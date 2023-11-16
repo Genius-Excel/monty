@@ -17,7 +17,7 @@ void add(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 /**
- * nop - doesn't do anything
+ * nop - function doesn't do anything
  * @stack: pointer to the stack
  * @line_number: line number in the file
  */

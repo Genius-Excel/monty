@@ -51,5 +51,6 @@ void nop(stack_t **stack, unsigned int line_number);
 void push_stack(stack_t **stack, int value);
 void print_stack(stack_t *stack);
 void sub(stack_t **stack, unsigned int line_number);
-void div_op(stack_t **stack, unsigned int line_number);
+void div_func(stack_t **stack, unsigned int line_number);
+void mul_func(stack_t **stack, unsigned int line_number);
 #endif

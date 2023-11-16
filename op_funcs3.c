@@ -112,7 +112,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 			putchar((*(*stack)).n);
 
-			*stack = (*(*stack)).next;
+		/*	*stack = (*(*stack)).next;*/
 		} while ((*(*stack)).n >= 0 && (*(*stack)).n <= 127);
 
 	}

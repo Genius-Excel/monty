@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 		{"sub", sub},
 		{"div", div_func},
 		{"mul", mul_func},
-		{"div", op_div},
+		{"div", div_func},
 		{NULL, NULL}
 	};
 

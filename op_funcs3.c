@@ -20,16 +20,11 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
-<<<<<<< HEAD
 * div_func - Divides the second top element of the stack from the top element
 * @stack: pointer to the stack
 * @line_number: the line number in the file
 */
 void div_func(stack_t **stack, unsigned int line_number)
-* op_div - subtracts the top element of a stack from the second top
-* @stack: stack which operation is to be done.
-* @line_number: line number which element is to be divided.
-void op_div(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*(*stack)).next == NULL)
 	{
@@ -64,11 +59,3 @@ void mul_func(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 }
-
-
-
-
-
-
-
-

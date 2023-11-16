@@ -89,3 +89,37 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 }
+
+
+/**
+* pchar - this fuction prints a character from a stack.
+* @stack: stack for which character is to be printed from.
+* @line_number: line number of which element is to be printed.
+*/
+
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*(*stack)).next == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*(*stack)).n >= 97 && (*(*stack)).n <= 122)
+	{
+
+		do {
+
+			putchar((*(*stack)).n);
+
+			*stack = (*(*stack)).next;
+		} while ((*(*stack)).n >= 97 && (*(*stack)).n <= 122);
+
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
+

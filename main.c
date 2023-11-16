@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 		{"div", div_func},
 		{"mul", mul_func},
 		{"div", div_func},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 

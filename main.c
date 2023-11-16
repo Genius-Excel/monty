@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
 		{"mul", mul_func},
 		{"div", div_func},
 		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 

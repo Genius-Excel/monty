@@ -64,8 +64,28 @@ void mul_func(stack_t **stack, unsigned int line_number)
 
 
 /**
-* comment - this function checks for comment in a line.
+* mod - this function calculate the mod of 2 elements in a stack.
 * @stack: stack which operation is to be done.
-* @line_number: line number to check for comments.
+* @line_number: line number for which modulus operation is to be done.
 * Return: void.
 */
+
+void mod(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*(*stack)).next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	/*Validated zero division error*/
+	if ((*(*stack)).n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	(*(*stack)).next->n %= (*(*stack)).n;
+
+	pop(stack, line_number);
+}

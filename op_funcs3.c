@@ -105,7 +105,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if ((*(*stack)).n >= 97 && (*(*stack)).n <= 122)
+	if ((*(*stack)).n >= 0 && (*(*stack)).n <= 127)
 	{
 
 		do {
@@ -113,7 +113,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 			putchar((*(*stack)).n);
 
 			*stack = (*(*stack)).next;
-		} while ((*(*stack)).n >= 97 && (*(*stack)).n <= 122);
+		} while ((*(*stack)).n >= 0 && (*(*stack)).n <= 127);
 
 	}
 	else

@@ -42,10 +42,12 @@ void div_func(stack_t **stack, unsigned int line_number)
 	/*call the pop function on the stack*/
 	pop(stack, line_number);
 }
+
+
 /**
 * mul_func - subtracts the top element of a stack from the second top
-* @stack: pointer to the stack
-* @line_number: the line number in the file
+* @stack: stack for which operation is to be done.
+* @line_number: line numbe for which elements are to be multiplied.
 */
 void mul_func(stack_t **stack, unsigned int line_number)
 {
@@ -59,3 +61,11 @@ void mul_func(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 }
+
+
+/**
+* comment - this function checks for comment in a line.
+* @stack: stack which operation is to be done.
+* @line_number: line number to check for comments.
+* Return: void.
+*/
